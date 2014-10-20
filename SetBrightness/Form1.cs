@@ -16,6 +16,7 @@ namespace SetBrightness
 {
     public partial class Form1 : Form
     {
+        byte[] LevelsOfBrightness;
         
         globalKeyboardHook gkh = new globalKeyboardHook();
         public Form1()
@@ -24,7 +25,7 @@ namespace SetBrightness
         }
         private void Form1_Load(object sender, EventArgs e)
          {
-            
+             GetAllLevelsOfBrightness();
              this.WindowState = FormWindowState.Minimized;
              if (this.WindowState == FormWindowState.Minimized)
              {
@@ -73,8 +74,22 @@ namespace SetBrightness
     }
 }
 
-   
-    public object GetBrightness()
+    void GetAllLevelsOfBrightness()
+    {
+        ManagementObjectSearcher searcher =
+                        new ManagementObjectSearcher("root\\WMI",
+                        "SELECT * FROM WmiMonitorBrightness");
+        foreach (ManagementObject queryObj in searcher.Get())
+        {
+
+                byte[] LevelsOfBrightness = (Byte[])(queryObj["Level"]);
+                //foreach (Byte arrValue in LevelsOfBrightness)
+                //{
+                //    Console.WriteLine("Level: {0} {1}", arrValue);
+                //}     
+        }
+    }
+    object GetBrightness()
     {
        object BrightnessLevel =0;
         ManagementObjectSearcher searcher =
@@ -108,6 +123,7 @@ namespace SetBrightness
         object CurrentBrightnessLvl1 = 0;
         CurrentBrightnessLvl1 = GetBrightness();
         byte CurrentBrightnessLvl = (byte)CurrentBrightnessLvl1;
+        
         if (CurrentBrightnessLvl == 20)
         {
             SetBrightness(20);
