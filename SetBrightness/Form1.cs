@@ -16,7 +16,7 @@ namespace SetBrightness
 {
     public partial class Form1 : Form
     {
-        byte[] LevelsOfBrightness;
+         byte[] LevelsOfBrightness;
         
         globalKeyboardHook gkh = new globalKeyboardHook();
         public Form1()
@@ -82,7 +82,7 @@ namespace SetBrightness
         foreach (ManagementObject queryObj in searcher.Get())
         {
 
-                byte[] LevelsOfBrightness = (Byte[])(queryObj["Level"]);
+                LevelsOfBrightness = (Byte[])(queryObj["Level"]);
                 //foreach (Byte arrValue in LevelsOfBrightness)
                 //{
                 //    Console.WriteLine("Level: {0} {1}", arrValue);
@@ -123,50 +123,17 @@ namespace SetBrightness
         object CurrentBrightnessLvl1 = 0;
         CurrentBrightnessLvl1 = GetBrightness();
         byte CurrentBrightnessLvl = (byte)CurrentBrightnessLvl1;
-        
-        if (CurrentBrightnessLvl == 20)
+        for (int i = 0; i <= LevelsOfBrightness.Length - 1; i++)
         {
-            SetBrightness(20);
-        }
-        if (CurrentBrightnessLvl == 25)
-        {
-            SetBrightness(20);
-        }
-        if (CurrentBrightnessLvl == 30)
-        {
-            SetBrightness(25);
-        }
-        if (CurrentBrightnessLvl == 35)
-        {
-            SetBrightness(30);
-        }
-        if (CurrentBrightnessLvl == 40)
-        {
-            SetBrightness(35);
-        }
-        if (CurrentBrightnessLvl == 45)
-        {
-            SetBrightness(40);
-        }
-        if (CurrentBrightnessLvl == 50)
-        {
-            SetBrightness(45);
-        }
-        if (CurrentBrightnessLvl == 55)
-        {
-            SetBrightness(50);
-        }
-        if (CurrentBrightnessLvl == 65)
-        {
-            SetBrightness(55);
-        }
-        if (CurrentBrightnessLvl == 80)
-        {
-            SetBrightness(65);
-        }
-        if (CurrentBrightnessLvl == 100)
-        {
-            SetBrightness(80);
+            if (CurrentBrightnessLvl == LevelsOfBrightness[i])
+            {
+                if (LevelsOfBrightness[i] == LevelsOfBrightness[0])// If min value do nothing
+                { }
+                else
+                {
+                    SetBrightness(LevelsOfBrightness[i - 1]);
+                }
+            }
         }
     }
     void BrightnessUpStep()
@@ -176,53 +143,20 @@ namespace SetBrightness
             object CurrentBrightnessLvl1 = 0;
             CurrentBrightnessLvl1 = GetBrightness();
             byte CurrentBrightnessLvl = (byte)CurrentBrightnessLvl1;
+            for (int i = 0; i <= LevelsOfBrightness.Length-1; i++)
+            {
+                if (CurrentBrightnessLvl == LevelsOfBrightness[i] )
+                {
+                    if (LevelsOfBrightness[i] == LevelsOfBrightness[LevelsOfBrightness.Length-1])// If max value do nothing
+                    { }
+                    else
+                    {
+                        SetBrightness(LevelsOfBrightness[i + 1]);
+                    }
+                }
+            }
+            
 
-
-            if (CurrentBrightnessLvl == 20)
-            {
-                SetBrightness(25);
-            }
-            if (CurrentBrightnessLvl == 25)
-            {
-                SetBrightness(30);
-            }
-            if (CurrentBrightnessLvl == 30)
-            {
-                SetBrightness(35);
-            }
-            if (CurrentBrightnessLvl == 35)
-            {
-                SetBrightness(40);
-            }
-            if (CurrentBrightnessLvl == 40)
-            {
-                SetBrightness(45);
-            }
-            if (CurrentBrightnessLvl == 45)
-            {
-                SetBrightness(50);
-            }
-            if (CurrentBrightnessLvl == 50)
-            {
-                SetBrightness(55);
-            }
-            if (CurrentBrightnessLvl == 55)
-            {
-                SetBrightness(65);
-            }
-            if (CurrentBrightnessLvl == 65)
-            {
-                SetBrightness(80);
-            }
-            if (CurrentBrightnessLvl == 80)
-            {
-                SetBrightness(100);
-            }
-            if (CurrentBrightnessLvl == 100)
-            {
-                SetBrightness(100);
-            }
-        
     } 
     
     private void Form1_Resize(object sender, EventArgs e)
