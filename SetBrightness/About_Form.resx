@@ -117,6 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="richTextBox2.Text" xml:space="preserve">
+    <value>For users who have ASUS notebooks after upgrading to Windows 8 / 8.1 
+stops functioning the screen brightness.
+Run program and use keys F5 to brightness down, and F6 to brightness up.
+Note: If You want that program start with Windows, add shortcut
+of SetBrightness.exe to C:\Users\$User_profile\AppData\
+Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+
+</value>
+  </data>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>Version 1.0
 Developer of this program is Roman Kuzmenko. To contact with author use:
@@ -132,16 +142,6 @@ Thanks to:
 Stormy Spike
 Hans Passant
 For the provided code samples</value>
-  </data>
-  <data name="richTextBox2.Text" xml:space="preserve">
-    <value>For users who have ASUS notebooks after upgrading to Windows 8 / 8.1 
-stops functioning the screen brightness.
-Run program and use keys F5 to brightness down, and F6 to brightness up.
-Note: If You want this program start with Windows, add shortcut
- of SetBrightness.exe to C:\Users\$User_profile\AppData\
-Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-
-</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

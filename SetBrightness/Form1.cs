@@ -16,6 +16,7 @@ namespace SetBrightness
 {
     public partial class Form1 : Form
     {
+        
         globalKeyboardHook gkh = new globalKeyboardHook();
         public Form1()
         {
@@ -58,6 +59,7 @@ namespace SetBrightness
         
 //...
     public static void SetBrightness(byte targetBrightness) {
+       
     ManagementScope scope = new ManagementScope("root\\WMI");
     SelectQuery query = new SelectQuery("WmiMonitorBrightnessMethods");
     using(ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, query)) {
@@ -92,6 +94,7 @@ namespace SetBrightness
    
     private void BrightnessUP_btn_Click(object sender, EventArgs e)
     {
+        
         BrightnessUpStep();
     }
 
