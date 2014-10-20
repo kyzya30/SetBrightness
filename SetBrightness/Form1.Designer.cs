@@ -37,12 +37,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.progaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Settings = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BrightnessUP_btn
             // 
-            this.BrightnessUP_btn.Location = new System.Drawing.Point(36, 48);
+            this.BrightnessUP_btn.Location = new System.Drawing.Point(36, 37);
             this.BrightnessUP_btn.Name = "BrightnessUP_btn";
             this.BrightnessUP_btn.Size = new System.Drawing.Size(161, 23);
             this.BrightnessUP_btn.TabIndex = 4;
@@ -52,7 +53,7 @@
             // 
             // BrightnessDown_btn
             // 
-            this.BrightnessDown_btn.Location = new System.Drawing.Point(36, 88);
+            this.BrightnessDown_btn.Location = new System.Drawing.Point(36, 77);
             this.BrightnessDown_btn.Name = "BrightnessDown_btn";
             this.BrightnessDown_btn.Size = new System.Drawing.Size(161, 23);
             this.BrightnessDown_btn.TabIndex = 5;
@@ -69,7 +70,7 @@
             // 
             // Exit_btn
             // 
-            this.Exit_btn.Location = new System.Drawing.Point(36, 130);
+            this.Exit_btn.Location = new System.Drawing.Point(36, 156);
             this.Exit_btn.Name = "Exit_btn";
             this.Exit_btn.Size = new System.Drawing.Size(161, 23);
             this.Exit_btn.TabIndex = 6;
@@ -102,11 +103,22 @@
             this.aboutProgramToolStripMenuItem.Text = "About program";
             this.aboutProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutProgramToolStripMenuItem_Click);
             // 
+            // Settings
+            // 
+            this.Settings.Location = new System.Drawing.Point(36, 116);
+            this.Settings.Name = "Settings";
+            this.Settings.Size = new System.Drawing.Size(161, 23);
+            this.Settings.TabIndex = 8;
+            this.Settings.Text = "Settings";
+            this.Settings.UseVisualStyleBackColor = true;
+            this.Settings.Click += new System.EventHandler(this.Settings_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(246, 192);
+            this.ClientSize = new System.Drawing.Size(246, 217);
+            this.Controls.Add(this.Settings);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Exit_btn);
             this.Controls.Add(this.BrightnessDown_btn);
@@ -133,6 +145,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem progaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutProgramToolStripMenuItem;
+        private System.Windows.Forms.Button Settings;
     }
 }
 

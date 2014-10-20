@@ -188,6 +188,12 @@ namespace SetBrightness
         ab.Show();
     }
 
+    private void Settings_Click(object sender, EventArgs e)
+    {
+        SettingsForm SF = new SettingsForm();
+        SF.Show();
+    }
+
    
 
    
