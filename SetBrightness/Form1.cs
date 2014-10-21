@@ -31,12 +31,18 @@ namespace SetBrightness
              {
                  this.ShowInTaskbar = false;
                  notifyIcon1.Visible = true;
-             } 
+             }
+             LoadValuesFromFileAndSetKeys();
 
              gkh.HookedKeys.Add(Keys.F6);
              gkh.HookedKeys.Add(Keys.F5);
              gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
            }
+        void LoadValuesFromFileAndSetKeys()
+        {
+        
+        }
+
         void gkh_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F6)

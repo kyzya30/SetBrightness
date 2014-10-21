@@ -90,7 +90,7 @@ namespace Utilities {
 		public void unhook() {
             if (callbackDelegate == null) return;
             bool ok = UnhookWindowsHookEx(hhook);
-            if (!ok) throw new Exception();
+           // if (!ok) throw new Exception();
             callbackDelegate = null;
 		}
 
