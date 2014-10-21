@@ -14,9 +14,17 @@ namespace SetBrightness
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            if (System.Diagnostics.Process.GetProcessesByName(Application.ProductName).Length > 1)
+            {
+                MessageBox.Show("Application is already running!","Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Form1());
+            }
             
         }
     }

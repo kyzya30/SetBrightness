@@ -45,7 +45,7 @@ namespace SetBrightness
         private void button1_Click(object sender, EventArgs e)
         {
             if (checkBox1.Checked == true)
-                
+       
             {
                 SetAutorunValue(true);
             }
@@ -64,11 +64,12 @@ namespace SetBrightness
             {
                 
                 MakeConfigFileAndWriteVal();
+            MessageBox.Show("Succesfully applied! Note: If you change the button, restart program");
+            this.Close();
             }
 
 
-            MessageBox.Show("Succesfully applied!");
-            this.Close();
+            
                 
         }
         void MakeConfigFileAndWriteVal()

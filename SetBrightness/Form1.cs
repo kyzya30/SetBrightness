@@ -11,11 +11,14 @@ using System.Runtime.InteropServices;
 using System.Management;
 using Utilities;
 using System.Threading;
+using System.IO;
 
 namespace SetBrightness
 {
     public partial class Form1 : Form
     {
+        string lineToKey1 = null;
+         string lineToKey2 = null;
          byte[] LevelsOfBrightness;
         
         globalKeyboardHook gkh = new globalKeyboardHook();
@@ -34,31 +37,82 @@ namespace SetBrightness
              }
              LoadValuesFromFileAndSetKeys();
 
-             gkh.HookedKeys.Add(Keys.F6);
-             gkh.HookedKeys.Add(Keys.F5);
-             gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
+             
            }
         void LoadValuesFromFileAndSetKeys()
         {
-        
+            string line;
+            string path = Directory.GetCurrentDirectory();
+            StreamReader file = File.OpenText(path + "\\config.txt");
+            
+            while ((line = file.ReadLine()) != null)
+            {
+                if (lineToKey1 == null)
+                { lineToKey1 = line; }
+                if (lineToKey1 != null)
+                { lineToKey2 = line; }
+            }
+            //maskedTextBox1.Text = lineToMask1;
+           // maskedTextBox2.Text = lineToMask2;
+            file.Close();
+            if (lineToKey1 == "1") {gkh.HookedKeys.Add(Keys.F1);}
+            if (lineToKey1 == "2") {gkh.HookedKeys.Add(Keys.F2);}
+            if (lineToKey1 == "3") {gkh.HookedKeys.Add(Keys.F3);}
+            if (lineToKey1 == "4") { gkh.HookedKeys.Add(Keys.F4); }
+            if (lineToKey1 == "5") { gkh.HookedKeys.Add(Keys.F5); }
+            if (lineToKey1 == "6") { gkh.HookedKeys.Add(Keys.F6); }
+            if (lineToKey1 == "7") { gkh.HookedKeys.Add(Keys.F7); }
+            if (lineToKey1 == "8") { gkh.HookedKeys.Add(Keys.F8); }
+            if (lineToKey1 == "9") { gkh.HookedKeys.Add(Keys.F9); }
+            if (lineToKey1 == "10") { gkh.HookedKeys.Add(Keys.F10); }
+            if (lineToKey1 == "11") { gkh.HookedKeys.Add(Keys.F11); }
+            if (lineToKey1 == "12") { gkh.HookedKeys.Add(Keys.F12); }
+            ///////////
+            if (lineToKey2 == "1") { gkh.HookedKeys.Add(Keys.F1); }
+            if (lineToKey2 == "2") { gkh.HookedKeys.Add(Keys.F2); }
+            if (lineToKey2 == "3") { gkh.HookedKeys.Add(Keys.F3); }
+            if (lineToKey2 == "4") { gkh.HookedKeys.Add(Keys.F4); }
+            if (lineToKey2 == "5") { gkh.HookedKeys.Add(Keys.F5); }
+            if (lineToKey2 == "6") { gkh.HookedKeys.Add(Keys.F6); }
+            if (lineToKey2 == "7") { gkh.HookedKeys.Add(Keys.F7); }
+            if (lineToKey2 == "8") { gkh.HookedKeys.Add(Keys.F8); }
+            if (lineToKey2 == "9") { gkh.HookedKeys.Add(Keys.F9); }
+            if (lineToKey2 == "10") { gkh.HookedKeys.Add(Keys.F10); }
+            if (lineToKey2 == "11") { gkh.HookedKeys.Add(Keys.F11); }
+            if (lineToKey2 == "12") { gkh.HookedKeys.Add(Keys.F12); }
+                // gkh.HookedKeys.Add(Keys.F5);
+                // gkh.HookedKeys.Add(Keys.F6);
+                
+                gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
         }
 
         void gkh_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F6)
-           {
-            e.Handled = true;
-           
-            Thread tt = new Thread(BrightnessUpStep);
-            tt.Start();
-            
-            }
-            if (e.KeyCode == Keys.F5)
-            {
-                e.Handled = true;
-                Thread tt1 = new Thread(BrightnessDownStep);
-                tt1.Start();
-            }
+            if (e.KeyCode == Keys.F1 && lineToKey2 == "1") { e.Handled = true; Thread tt = new Thread(BrightnessUpStep); tt.Start(); }
+            if (e.KeyCode == Keys.F2 && lineToKey2 == "2") { e.Handled = true; Thread tt = new Thread(BrightnessUpStep); tt.Start(); }
+            if (e.KeyCode == Keys.F3 && lineToKey2 == "3") { e.Handled = true; Thread tt = new Thread(BrightnessUpStep); tt.Start(); }
+            if (e.KeyCode == Keys.F4 && lineToKey2 == "4") { e.Handled = true; Thread tt = new Thread(BrightnessUpStep); tt.Start(); }
+            if (e.KeyCode == Keys.F5 && lineToKey2 == "5") { e.Handled = true; Thread tt = new Thread(BrightnessUpStep); tt.Start(); }
+            if (e.KeyCode == Keys.F6 && lineToKey2 == "6") { e.Handled = true; Thread tt = new Thread(BrightnessUpStep); tt.Start(); }
+            if (e.KeyCode == Keys.F7 && lineToKey2 == "7") { e.Handled = true; Thread tt = new Thread(BrightnessUpStep); tt.Start(); }
+            if (e.KeyCode == Keys.F8 && lineToKey2 == "8") { e.Handled = true; Thread tt = new Thread(BrightnessUpStep); tt.Start(); }
+            if (e.KeyCode == Keys.F9 && lineToKey2 == "9") { e.Handled = true; Thread tt = new Thread(BrightnessUpStep); tt.Start(); }
+            if (e.KeyCode == Keys.F10 && lineToKey2 == "10") { e.Handled = true; Thread tt = new Thread(BrightnessUpStep); tt.Start(); }
+            if (e.KeyCode == Keys.F11 && lineToKey2 == "11") { e.Handled = true; Thread tt = new Thread(BrightnessUpStep); tt.Start(); }
+            if (e.KeyCode == Keys.F12 && lineToKey2 == "12") { e.Handled = true; Thread tt = new Thread(BrightnessUpStep); tt.Start(); }
+              ////////// 
+            if (e.KeyCode == Keys.F1 && lineToKey1 == "1") { e.Handled = true; Thread tt = new Thread(BrightnessDownStep); tt.Start(); }
+            if (e.KeyCode == Keys.F2 && lineToKey1 == "2") { e.Handled = true; Thread tt = new Thread(BrightnessDownStep); tt.Start(); }
+            if (e.KeyCode == Keys.F3 && lineToKey1 == "3") { e.Handled = true; Thread tt = new Thread(BrightnessDownStep); tt.Start(); }
+            if (e.KeyCode == Keys.F4 && lineToKey1 == "4") { e.Handled = true; Thread tt = new Thread(BrightnessDownStep); tt.Start(); }
+            if (e.KeyCode == Keys.F5 && lineToKey1 == "5") { e.Handled = true; Thread tt = new Thread(BrightnessDownStep); tt.Start(); }
+            if (e.KeyCode == Keys.F6 && lineToKey1 == "6") { e.Handled = true; Thread tt = new Thread(BrightnessDownStep); tt.Start(); }
+            if (e.KeyCode == Keys.F7 && lineToKey1 == "7") { e.Handled = true; Thread tt = new Thread(BrightnessDownStep); tt.Start(); }
+            if (e.KeyCode == Keys.F8 && lineToKey1 == "8") { e.Handled = true; Thread tt = new Thread(BrightnessDownStep); tt.Start(); }
+            if (e.KeyCode == Keys.F9 && lineToKey1 == "9") { e.Handled = true; Thread tt = new Thread(BrightnessDownStep); tt.Start(); }
+            if (e.KeyCode == Keys.F10 && lineToKey1 == "10") { e.Handled = true; Thread tt = new Thread(BrightnessDownStep); tt.Start(); }
+            if (e.KeyCode == Keys.F11 && lineToKey1 == "11") { e.Handled = true; Thread tt = new Thread(BrightnessDownStep); tt.Start(); }
+            if (e.KeyCode == Keys.F12 && lineToKey1 == "12") { e.Handled = true; Thread tt = new Thread(BrightnessDownStep); tt.Start(); }
         }
        
 
